@@ -15,6 +15,18 @@ public class NumberPrograms {
 
         //Check if the number is Armstrong number
         System.out.println("Is Armstrong number "+anotherNum+" : " +isArmstrongNumber(anotherNum));
+
+        //Print the reverse number
+        System.out.println("Reverse number "+anotherNum+" : " +reverseNumber(anotherNum));
+    }
+
+    private static int reverseNumber(int anotherNum) {
+        int reverserNumber = 0;
+        while(anotherNum >0) {
+            reverserNumber = (reverserNumber *10 )+ anotherNum%10;
+            anotherNum = anotherNum/10;
+        }
+        return reverserNumber;
     }
 
     public static boolean isPrime(int number) {

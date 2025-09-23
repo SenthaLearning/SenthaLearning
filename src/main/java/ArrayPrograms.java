@@ -17,6 +17,49 @@ public class ArrayPrograms {
         // Find Second Largest Number in an Array
         secondLargestNum(intArr);
 
+        // Print common elements in an array
+        printCommonEle(new String[]{"a", "b", "c", "d"}, new String[]{"a", "b", "c", "e"});
+
+        // Do sum and print the number
+        sumOfInt(new String[]{"1","2","a","b","c","5","6","d"});
+
+        // Count and print odd and even number in an array
+        printCountOddEven(new int[]{1,2,3,4,5,6,7,8,9});
+    }
+
+    private static void printCountOddEven(int[] intArr) {
+        int even =0;
+        int odd = 0;
+        for (int i : intArr) {
+            if((i%2)==0) {
+                even++;
+            } else odd++;
+        }
+        System.out.println("Odd number count: " + odd);
+        System.out.println("Even number count: "+ even);
+    }
+
+    private static void sumOfInt(String[] strArr) {
+        int sum = 0;
+        for (String s : strArr) {
+            try {
+                sum = sum + Integer.parseInt(s);
+            } catch (NumberFormatException e) {
+
+            }
+        }
+        System.out.println("Sum of all interers : "+ sum);
+    }
+
+    private static void printCommonEle(String[] strArr1, String[] strArr2) {
+        HashSet<String> hs = new HashSet<>();
+        hs.addAll(Arrays.asList(strArr1));
+        for (String s : strArr2) {
+            if(hs.contains(s)) {
+                System.out.print(s+ " ");
+            }
+        }
+        System.out.println();
     }
 
     public static void secondLargestNum(int[] intArr) {
