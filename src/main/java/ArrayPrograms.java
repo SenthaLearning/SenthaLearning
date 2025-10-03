@@ -4,8 +4,8 @@ public class ArrayPrograms {
 
     public static void main(String[] args) {
         // print duplicated values in string array
-        String[] arr = {"str","str","sentha","sen","sentha","thamarai"};
-        int[] intArr = {10,11,2,3,5,6,9,13};
+        String[] arr = {"str", "str", "sentha", "sen", "sentha", "thamarai"};
+        int[] intArr = {10, 11, 2, 3, 5, 6, 9, 13};
         findDuplicates(arr);
 
         // remove duplicates in array list and print
@@ -21,22 +21,41 @@ public class ArrayPrograms {
         printCommonEle(new String[]{"a", "b", "c", "d"}, new String[]{"a", "b", "c", "e"});
 
         // Do sum and print the number
-        sumOfInt(new String[]{"1","2","a","b","c","5","6","d"});
+        sumOfInt(new String[]{"1", "2", "a", "b", "c", "5", "6", "d"});
 
         // Count and print odd and even number in an array
-        printCountOddEven(new int[]{1,2,3,4,5,6,7,8,9});
+        printCountOddEven(new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9});
+
+        // change position in array by provided number
+        changePosition(new int[]{5, 6, 7, 8, 9, 10}, 3);
+
+        // Find any two values provide sum of 17
+        findValuesReqSum(new int[]{6,8,11,6,7,18});
+
+        }
+
+    private static void findValuesReqSum(int[] intArr) {
+        for (int i = 0; i < intArr.length; i++) {
+            for (int j = i; j < intArr.length; j++) {
+                int sum = intArr[i] + intArr[j];
+                if (sum==17) {
+                    System.out.println("Adding values at index" + i +" and "+j +" will give 17");
+                }
+            }
+        }
+
     }
 
     private static void printCountOddEven(int[] intArr) {
-        int even =0;
+        int even = 0;
         int odd = 0;
         for (int i : intArr) {
-            if((i%2)==0) {
+            if ((i % 2) == 0) {
                 even++;
             } else odd++;
         }
         System.out.println("Odd number count: " + odd);
-        System.out.println("Even number count: "+ even);
+        System.out.println("Even number count: " + even);
     }
 
     private static void sumOfInt(String[] strArr) {
@@ -48,15 +67,15 @@ public class ArrayPrograms {
 
             }
         }
-        System.out.println("Sum of all interers : "+ sum);
+        System.out.println("Sum of all interers : " + sum);
     }
 
     private static void printCommonEle(String[] strArr1, String[] strArr2) {
         HashSet<String> hs = new HashSet<>();
         hs.addAll(Arrays.asList(strArr1));
         for (String s : strArr2) {
-            if(hs.contains(s)) {
-                System.out.print(s+ " ");
+            if (hs.contains(s)) {
+                System.out.print(s + " ");
             }
         }
         System.out.println();
@@ -64,33 +83,33 @@ public class ArrayPrograms {
 
     public static void secondLargestNum(int[] intArr) {
         sortArray(intArr);
-        System.out.println("Second Largest Number : " + intArr[intArr.length-2]);
+        System.out.println("Second Largest Number : " + intArr[intArr.length - 2]);
 
     }
 
     public static void sortArray(int[] intArr) {
 
-        for(int i=0; i<intArr.length-1;i++) {
-            for(int j=i+1;j<intArr.length;j++) {
-                if(intArr[i]>intArr[j]) {
+        for (int i = 0; i < intArr.length - 1; i++) {
+            for (int j = i + 1; j < intArr.length; j++) {
+                if (intArr[i] > intArr[j]) {
                     int temp = intArr[i];
-                    intArr[i]=intArr[j];
+                    intArr[i] = intArr[j];
                     intArr[j] = temp;
                 }
             }
         }
         System.out.println("Sorted array values are ");
-       for(int val: intArr) {
-           System.out.print(val + " ");
-       }
+        for (int val : intArr) {
+            System.out.print(val + " ");
+        }
         System.out.println();
     }
 
     public static void removeDuplicateFromArrayList(List<String> list) {
         Set<String> strSet = new HashSet<>();
         System.out.println("Duplicates values are: ");
-        for(String str : list) {
-            if(!strSet.add(str)) {
+        for (String str : list) {
+            if (!strSet.add(str)) {
                 System.out.print(str + " ");
             }
         }
@@ -101,11 +120,30 @@ public class ArrayPrograms {
     public static void findDuplicates(String[] strArr) {
         Set<String> strSet = new HashSet<>();
         System.out.println("Duplicates values are: ");
-        for(String str : strArr) {
-            if(!strSet.add(str)) {
+        for (String str : strArr) {
+            if (!strSet.add(str)) {
                 System.out.print(str + " ");
             }
         }
         System.out.println();
     }
+
+    private static void changePosition(int[] intArr, int pos) {
+        int[] newArr = new int[intArr.length];
+        int j = 0;
+        for (int i = pos; i < intArr.length; i++) {
+            newArr[j] = intArr[i];
+            j++;
+        }
+        for (int i = 0; i < pos; i++) {
+                newArr[j] = intArr[i];
+                j++;
+        }
+        for (int i : newArr) {
+            System.out.print(i + " ");
+        }
+        System.out.println();
+    }
 }
+
+
